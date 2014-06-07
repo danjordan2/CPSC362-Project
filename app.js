@@ -208,7 +208,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('hogan-express'));
 app.set('view engine', 'html');
 app.set('partials', partials);
-app.use(express.favicon('public/favicon.ico'));
+app.use(express.favicon('/public/favicon.ico'));
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());

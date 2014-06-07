@@ -1,0 +1,65 @@
+{{> header}}
+<body class="">
+    {{> employee_top_nav}}
+    {{> employee_side_nav}}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">Invoice: View</h1>
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">Billing<span class="divider">/</span></li>
+            <li class="active">Invoices</li>
+        </ul>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="well">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{full_name}}<br>
+                                    {{address}}<br>
+                                    {{city}}, {{state}} {{zip}}<br>
+                                {{phone}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Invoice ID</th>
+                                <th>Service</th>
+                                <th>Start date</th>
+                                <th>End date</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{id}}</td>
+                                <td><p>{{plan.title}}</p>
+                                    <p>Talk: {{plan.talk}}</p>
+                                    <p>Text: {{plan.text}}</p>
+                                    <p>Data: {{plan.web}}</p>
+                                </td>
+                                <td>{{start_date}}</td>
+                                <td>{{end_date}}</td>
+                                <td>${{total}}</td>
+                                <td class="{{status}}">{{status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

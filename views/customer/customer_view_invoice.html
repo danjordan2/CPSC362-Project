@@ -1,0 +1,94 @@
+{{> header}}
+<body class="">
+    {{> customer_top_nav}}
+    {{> customer_side_nav}}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">Invoice: View</h1>
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">Billing<span class="divider">/</span></li>
+            <li class="active">Invoices</li>
+        </ul>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="well">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{full_name}}<br>
+                                    {{address}}<br>
+                                    {{city}}, {{state}} {{zip}}<br>
+                                {{phone}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Invoice ID</th>
+                                <th>Service</th>
+                                <th>Start date</th>
+                                <th>End date</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{id}}</td>
+                                <td><p>{{plan.title}}</p>
+                                    <p>Talk: {{plan.talk}}</p>
+                                    <p>Text: {{plan.text}}</p>
+                                    <p>Data: {{plan.web}}</p>
+                                </td>
+                                <td>{{start_date}}</td>
+                                <td>{{end_date}}</td>
+                                <td>${{total}}</td>
+                                <td class="{{status}}">{{status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button id="pay_invoice" class="btn btn-primary pull-right" {{payment_button}}>Pay Invoice</button>
+            </div>
+            <div id="payment_form" class="row-fluid">
+                <div class="well">
+                    <form id="tab" action="/customer/account/invoice/{{id}}" method="post">
+                        <label><strong>Enter information as it appears on your bank statement</strong></label><br/>
+                        <label>Full Name</label>
+                        <input name="name" type="text" value="" class="input-xlarge" required>
+                        <label>Address</label>
+                        <input name="address" type="text" value="" class="input-xlarge" required>
+                        <label>City</label>
+                        <input name="city" type="text" value="" class="input-xlarge" required>
+                        <label>State</label>
+                        <input name="state" type="text" value="" class="input-xlarge" required>
+                        <label>Zip</label>
+                        <input name="zip" type="text" value="" class="input-xlarge" required>
+                        <label>Credit Card</label>
+                        <input name="card" type="text" value="" class="input-xlarge" required>
+                        <label>Expiration</label>
+                        <input name="exp_month" type="text" value="" placeholder="MM" class="input-small" required>
+                        <input name="exp_year" type="text" value="" placeholder="YY" class="input-small" required>
+                        <input name="amount" type="hidden" value="{{total}}">
+
+                        <div class="btn-toolbar">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="btn-group"> </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

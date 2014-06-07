@@ -1,0 +1,77 @@
+{{> header}}
+<body class="">
+    {{> customer_top_nav}}
+    {{> customer_side_nav}}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">Dashboard</h1>
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">Dashboard</li>
+        </ul>
+        <div class="container-fluid">
+            <div id="flags">
+            {{#flags}}                    
+                <div class="alert alert-error flag">
+                    <button type="button" class="close flag close_flag" data-dismiss="alert">×</button>
+                {{date}}: {{text}} - Please contact customer service ASAP</div>
+            {{/flags}}
+            </div>
+            <div class="row-fluid">
+                <div class="block span6">
+                    <div class="block-heading"><a data-toggle="collapse">Account Summary</a> </div>
+                    <div id="widget2container" class="block-body collapse in">
+                        <table class="table list">
+                            <tbody>
+                                <tr>
+                                    <td><p><i class="icon-file"></i> <strong>Outstanding Invoices:</strong></p></td>
+                                    <td></td>
+                                    <td><p>{{outstanding}}</p>
+                                    <a href="/customer/account/invoices">View Invoices</a></td>
+                                </tr>
+                                <tr>
+                                    <td><p><i class="icon-calendar"></i> <strong>Balance as of {{date}}:</strong></p></td>
+                                    <td></td>
+                                    <td><p>${{balance}}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><i class="icon-calendar"></i> <strong>Next Scheduled Invoice:</strong></p></td>
+                                    <td></td>
+                                    <td><p>{{due_date}}</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="block span6"> <a class="block-heading" data-toggle="collapse">Support Summary </a>
+                    <div id="widget1container" class="block-body collapse in">
+                        <table class="table list">
+                            <tbody>
+                                <tr>
+                                    <td><p><i class="icon-file"></i> <strong>Open tickets:</strong></p></td>
+                                    <td></td>
+                                    <td style="width: 100px;"><p>{{open_tickets}}</p>
+                                    <a href="customer/support/tickets/view">View Tickets</a></td>
+                                </tr>
+                                <tr>
+                                    <td><p><i class="icon-folder-open"></i> <strong>Recent Support Activity:</strong></p>
+                                    {{#ticket.id}}
+                                        <i class="icon-file"></i> <strong>Ticket</strong> <a href="/customer/support/ticket/{{ticket.id}}">{{ticket.id}}</a> updated by {{ticket.last_update}} ({{ticket.role}})<br/>
+                                        <strong>Subject:</strong> {{ticket.subject}}
+                                    {{/ticket.id}}
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

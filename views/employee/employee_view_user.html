@@ -1,0 +1,147 @@
+{{> header}}
+<body class="">
+    {{> employee_top_nav}}
+    {{> employee_side_nav}}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">User: {{user.username}}</h1>
+            <h1 class="page-title">Customer ID: {{id}}</h1>
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">User</li>
+        </ul>
+        <div class="container-fluid">
+            {{#msg}}
+            <b><div class="alert alert-info"><button type="button" class="close close_flag" data-dismiss="alert">×</button>{{msg}}</div></b>
+            {{/msg}}
+            <div class="block"> <a class="block-heading">User</a>
+                <div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Contact information</th>
+                                <th>Account standing</th>
+                                <th>Account flags</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 300px;">{{user.name}}<br>
+                                    {{user.address}}<br>
+                                    {{user.city}}, {{user.state}} {{user.zip}}<br>
+                                    {{user.phone}}<br>
+
+                                </td>
+                                <td style="width: 300px;"><strong>Standing:</strong> {{user.standing}} 
+                                    <br><br/>
+                                    <a class="btn" data-toggle="modal" href="#suspend_service">{{buttons.suspend_text}} Service</a>
+                                    <a class="btn" data-toggle="modal" href="#close_account">{{buttons.close_text}} Account</a>
+                                </td>
+                                <td style="float: left; width: 400px;">
+                                    {{#user.billing.flags}}
+                                    <p>{{user}} on {{date}}: {{text}} <a href="/employee/user/{{id}}/flag/{{_id}}/remove" role="button" data-toggle="modal"><i class="icon-remove"></i></a></p>
+                                    {{/user.billing.flags}} 
+                                    <p><a id="add_flag">Add flag..</a></p>
+                                    <div id="flag_form">
+                                    <form action="/employee/user/{{id}}", method="post">
+                                    <input name="flag" type="text" class="input-xlarge" style="float: left; margin-right: 5px;" placeholder="Flag description:" required>
+                                    <input name="fee" type="text" style="float: left; width: 40px;" value ="0.00" placeholder="$0.00" required>
+                                        <button type="submit" class="btn btn-primary pull-right" style="float: left;">Add</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="block span6">
+                    <div class="block-heading"><a>Invoices</a> </div>
+                    <div id="widget2container" class="block-body collapse in">
+                        <table class="table list">
+                            <tbody>
+                                <tr>
+                                    <th>Invoice ID</th>
+                                    <th>Amount</th>
+                                    <th>Date Due</th>
+                                    <th>Status</th>
+                                </tr>
+                                {{#invoices}}
+                                <tr>
+                                    <td><a href="/employee/billing/invoice/{{_id}}">{{_id}}</a></td>
+                                    <td>${{amount}}</td>
+                                    <td>{{due}}</td>
+                                    <td class="{{status}}">{{status}}</td>
+                                </tr>
+                                {{/invoices}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="block span6">
+                    <div class="block-heading"><a>Recent payments</a> </div>
+                    <div id="widget2container" class="block-body collapse in">
+                        <table class="table list">
+                            <tbody>
+                                <tr>
+                                    <th>Transaction ID</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                                {{#payments}}
+                                <tr>
+                                    <td><a href="/employee/billing/payment/{{_id}}">{{_id}}</a></td>
+                                    <td>${{amount}}</td>
+                                    <td>{{date}}</td>
+                                    <td>{{status}}</td>
+                                </tr>
+                                {{/payments}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+          <div class="modal small hide fade" id="suspend_service" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h3 id="myModalLabel">{{buttons.suspend_text}} Service</h3>
+            </div>
+        <div class="modal-body">
+              <p class="error-text"><i class="icon-warning-sign modal-icon"></i>Are you sure?</p>
+            </div>
+        <div class="modal-footer">
+                <form method="post" action="/employee/user/{{id}}/{{buttons.suspend_action}}">
+              <button class="btn" data-dismiss="modal" aria-hidden="true">No</button>
+              <button style="submit" class="btn btn-danger">Yes</button>
+          </form>
+            </div>
+      </div>
+          <div class="modal small hide fade" id="close_account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h3 id="myModalLabel">{{buttons.close_text}} account</h3>
+            </div>
+        <div class="modal-body">
+              <p class="error-text"><i class="icon-warning-sign modal-icon"></i>Are you sure?</p>
+            </div>
+        <div class="modal-footer">
+                <form method="post" action="/employee/user/{{id}}/{{buttons.close_action}}">
+              <button class="btn" data-dismiss="modal" aria-hidden="true">No</button>
+              <button style="submit" class="btn btn-danger">Yes</button>
+          </form>
+            </div>
+      </div>
+
+
+
+</div>
+</div>
+
+</body>
+</html>

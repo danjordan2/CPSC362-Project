@@ -1,0 +1,51 @@
+{{> header}}
+<body class="">
+    {{> customer_top_nav}}
+    {{> customer_side_nav}}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">Invoice: List</h1>
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">Billing<span class="divider">/</span></li>
+            <li class="active">Invoices</li>
+        </ul>
+        <div class="container-fluid">
+        {{#msg}}
+            <b><div class="alert alert-info"><button type="button" class="close close_flag" data-dismiss="alert">×</button>{{msg}}</div></b>
+        {{/msg}}
+            <div class="row-fluid">
+                <div class="well">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Invoice ID</th>
+                                <th>Date Posted</th>
+                                <th>Amount</th>
+                                <th>Date Due</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#invoices}}
+                            <tr>
+                                <td>{{_id}}</td>
+                                <td>{{posted}}</td>
+                                <td>${{amount}}</td>
+                                <td>{{due}}</td>
+                                <td class="{{status}}">{{status}}</td>
+                                <td><a href="/customer/account/invoice/{{_id}}">View Invoice</a></td>
+                            </tr>
+                            {{/invoices}}
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

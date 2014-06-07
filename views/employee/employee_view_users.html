@@ -1,0 +1,46 @@
+{{> header}}
+<body class="">
+    {{> employee_top_nav}}
+    {{> employee_side_nav}}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">Users</h1>
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">Users<span class="divider">/</span></li>
+            <li class="active">View</li>
+        </ul>
+        <div class="container-fluid">
+        {{#msg}}
+            <b><div class="alert alert-info"><button type="button" class="close close_flag" data-dismiss="alert">×</button>{{msg}}</div></b>
+        {{/msg}}
+            <div class="row-fluid">
+                <div class="well">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Customer ID</th>
+                                <th>Name</th>
+                                <th>Username</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#users}}
+                            <tr>
+                                <td><a href="/employee/user/{{_id}}">{{_id}}</a></td>
+                                <td>{{user.name}}</td>
+                                <td>{{user.username}}</td>
+                            </tr>
+                            {{/users}}
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

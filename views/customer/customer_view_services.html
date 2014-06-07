@@ -1,0 +1,78 @@
+{{> header}}
+<body class="">
+    {{> customer_top_nav}}
+    {{> customer_side_nav}}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">Change Service Plan</h1>
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">Billing<span class="divider">/</span></li>
+            <li class="active">Service</li>
+        </ul>
+        <div class="container-fluid">
+            {{#msg}}
+            <b><div class="alert alert-info"><button type="button" class="close close_flag" data-dismiss="alert">×</button>{{msg}}</div></b>
+            {{/msg}}
+            <div class="row-fluid">
+                <p class="block-heading">Current Plan</p>
+                <div class="well">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Talk</th>
+                                <th>Text</th>
+                                <th>Web</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{current_plan.talk}}</td>
+                                <td>{{current_plan.text}}</td>
+                                <td>{{current_plan.web}}</td>
+                                <td>${{current_plan.price}}/Month</td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <p class="block-heading">Available Plans</p>
+                <div class="well">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Talk</th>
+                                <th>Text</th>
+                                <th>Web</th>
+                                <th>Price</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <form  action="/customer/account/services" method="post">
+                                {{#plans}}
+                                <tr>
+                                    <td>{{talk}}</td>
+                                    <td>{{text}}</td>
+                                    <td>{{web}}</td>
+                                    <td>${{price}}/Month</td>
+                                    <td>Select this plan <input type="radio" name="plan" value="{{_id}}">
+                                </td>
+                            </tr>
+                            {{/plans}}
+                        </tbody>
+                    </table>
+                </div>
+                <button type="submit" class="btn btn-primary pull-right">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{{> header}}
+<body class="">
+    {{> employee_top_nav}}
+    {{> employee_side_nav}}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">Payment History</h1>
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">Billing<span class="divider">/</span></li>
+            <li class="active">Payments</li>
+        </ul>
+        <div class="container-fluid">
+        {{#msg}}
+            <b><div class="alert alert-info"><button type="button" class="close close_flag" data-dismiss="alert">×</button>{{msg}}</div></b>
+        {{/msg}}
+            <div class="row-fluid">
+                <div class="well">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Invoice ID</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#payments}}
+                            <tr>
+                                <td><a href="/employee/billing/payment/{{_id}}">{{_id}}</a></td>
+                                <td><a href="/employee/billing/invoice/{{invoice_id}}">{{invoice_id}}</a></td>
+                                <td>{{date}}</td>
+                                <td>${{amount}}</td>
+                                <td class="{{status}}">{{status}}</td>
+                            </tr>
+                            {{/payments}}
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

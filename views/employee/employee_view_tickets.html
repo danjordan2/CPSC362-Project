@@ -1,0 +1,51 @@
+{{> header}}
+<body class="">
+    {{> employee_top_nav}}
+    {{> employee_side_nav}}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">View Support Tickets</h1>
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li><a href="/employee/support/tickets/view">Suport</a><span class="divider">/</span></li>
+            <li class="active">View tickets</li>
+        </ul>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                {{#department}}
+                    <h2 class="page-title">Department: {{department}}</h2>
+                {{/department}}
+                <div class="well">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Ticket ID</th>
+                                <th>Subject</th>
+                                <th>Department</th>
+                                <th>Created</th>
+                                <th>Updated</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#tickets}}
+                            <tr>
+                                <td><a href="/employee/support/ticket/{{_id}}">{{_id}}</a></td>
+                                <td>{{subject}}</td>
+                                <td>{{department}}</td>
+                                <td>{{date}}</td>
+                                <td>{{updated.time}}</td>
+                                <td>{{status}}</td>
+                            </tr>
+                            {{/tickets}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

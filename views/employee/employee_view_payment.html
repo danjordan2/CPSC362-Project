@@ -1,0 +1,72 @@
+{{> header}}
+<body class="">
+    {{> employee_top_nav}}
+    {{> employee_side_nav}}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">Payment Receipt</h1>
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">Billing<span class="divider">/</span></li>
+            <li class="active">Receipt</li>
+        </ul>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="well">
+                    <table class="table" style="width: 400px;">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Billing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{user}}<br>
+                                    {{address}}<br>
+                                    {{city}}, {{state}} {{zip}}<br>
+                                    {{phone}}
+                                </td>
+                                <td>{{payment.name}}<br>
+                                    {{payment.address}}<br>
+                                    {{payment.city}}, {{payment.state}} {{payment.zip}}<br><br/>
+                                    Payment: <br/>
+                                    <strong>Credit Card:</strong> {{card}}</br>
+                                    <strong>Expiration:</strong> {{payment.exp_month}}/{{payment.exp_year}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Service</th>
+                                <th>Payment Date</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{id}}</td>
+                                <td><p>{{payment.plan.title}}</p>
+                                    <p>Talk: {{payment.plan.talk}}</p>
+                                    <p>Text: {{payment.plan.text}}</p>
+                                    <p>Data: {{payment.plan.web}}</p>
+                                </td>
+                                <td>{{payment.date}}</td>
+                                <td>${{payment.amount}}</td>
+                                <td>{{payment.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

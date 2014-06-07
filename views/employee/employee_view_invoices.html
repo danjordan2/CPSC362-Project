@@ -1,0 +1,50 @@
+{{> header}}
+<body class="">
+    {{> employee_top_nav}}
+    {{> employee_side_nav}}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">Invoice: List</h1>
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">Billing<span class="divider">/</span></li>
+            <li class="active">Invoices</li>
+        </ul>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="well">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Invoice ID</th>
+                                <th>User</th>
+                                <th>Date Posted</th>
+                                <th>Amount</th>
+                                <th>Date Due</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#invoices}}
+                            <tr>
+                                <td>{{_id}}</td>
+                                <td>{{user}}</td>
+                                <td>{{posted}}</td>
+                                <td>${{amount}}</td>
+                                <td>{{due}}</td>
+                                <td class="{{status}}">{{status}}</td>
+                                <td><a href="/employee/billing/invoice/{{_id}}">View Invoice</a></td>
+                            </tr>
+                            {{/invoices}}
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

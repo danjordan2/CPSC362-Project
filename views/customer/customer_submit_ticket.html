@@ -1,0 +1,39 @@
+{{> header}}
+<body class="">
+    {{> customer_top_nav}}
+    {{> customer_side_nav}}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">Submit a help ticket</h1>
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">Suport <span class="divider">/</span></li>
+            <li class="active">New ticket</li>
+        </ul>
+        <div class="container-fluid">
+            <form action="/customer/support/tickets/new" method="post">
+                <label>Username</label>
+                <input type="text" name="username" value="{{username}}" class="input-xlarge" readonly>
+                <label>Name</label>
+                <input type="text" name="name" class="input-xlarge" required>
+                <label>Subject</label>
+                <input type="text" name="subject" class="input-xlarge" required>
+                <label>Message</label>
+                <textarea name="message"  style="width: 80%; height: 200px;" class="input-xlarge" required></textarea>
+                <label>Department</label>
+                <select required name="department">
+                    <option value="" selected>Select...</option>
+                    <option value="General">General Support</option>
+                    <option value="Billing">Billing & Sales</option>
+                    <option value="Technical">Technical Support</option>
+                </select>
+                <br/>
+                <button type="submit" class="btn btn-primary"></i>Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
